@@ -1,0 +1,8 @@
+<subaru_cars>
+	<model name="Outback"/>
+	<model name="Forester"/>
+	<model name="Impreza"/>
+	<model name="Legacy"/>
+	<model name="Crosstrek"/>
+	<model name="BRZ"/>
+</subaru_cars>
