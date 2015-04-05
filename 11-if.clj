@@ -12,3 +12,9 @@
 
 (prn hi)
 (prn hi-random)
+
+
+(prn (rand-nth ["Hello" "Goodbye"]))
+
+; other random: GUID
+(prn (java.util.UUID/randomUUID))
