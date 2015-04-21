@@ -60,3 +60,16 @@
 (def vec [0 [10 11 [120 121 123]] 2 3])
 
 (prn (get-in vec [1 2 0]))		; 120
+
+; ---------------------------------------------------------------------------------------------------------------------
+
+; sorting seq
+
+(prn (sort [4 2 3 1]))			; (1 2 3 4)
+(prn (sort > [4 2 3 1]))		; (4 3 2 1)
+
+(def vm [{:key "k3", :val "v3"} {:key "k2", :val "v2"} {:key "k1", :val "v1"}])
+
+; compare - compares arguments and returns -1, 0, 1
+(prn (sort #(compare (:key %1) (:key %2)) vm))	; ({:key "k1", :val "v1"} {:key "k2", :val "v2"} {:key "k3", :val "v3"})
+(prn (sort-by :val vm))						; ({:key "k1", :val "v1"} {:key "k2", :val "v2"} {:key "k3", :val "v3"})

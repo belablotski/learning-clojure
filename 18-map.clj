@@ -93,3 +93,39 @@
 (prn (get mc #(1 2 3)))				; nil
 (prn (dissoc mc #(3 2 1)))				; isn't removed: {{:k1 :v1} 100, [:k2] 200, (:k3) 300, #<user$fn__57 user$fn__57@6424f87e> 400, #<core$_PLUS_ clojure.core$_PLUS_@5adf20ae> 500}
 (prn (dissoc mc #(1 2 3)))				; isn't removed: {{:k1 :v1} 100, [:k2] 200, (:k3) 300, #<user$fn__57 user$fn__57@1b341f7c> 400, #<core$_PLUS_ clojure.core$_PLUS_@5fd83099> 500}
+
+; ---------------------------------------------------------------------------------------------------------------------
+
+; treat map as sequence
+
+; map to seq
+(def m2 {1 10 2 20 3 30})
+(prn (seq m2))						; ([1 10] [3 30] [2 20])
+
+; seq to map
+(prn (conj m2 [4 40]))					; {1 10, 4 40, 3 30, 2 20}
+(prn (into m2 [[4 40] [5 50]]))			; {1 10, 4 40, 3 30, 2 20, 5 50}
+(prn (into {} [[4 40] [5 50]]))			; {4 40, 5 50}
+
+; zip -- create map from two sequences: keys and values
+(prn (zipmap [1 2 3 4 5] [10 20 30 40 50]))	; {5 50, 4 40, 3 30, 2 20, 1 10}
+
+; ---------------------------------------------------------------------------------------------------------------------
+
+; processing maps
+(prn (keys m2))						; (1 3 2)  -- access to keys
+(prn (vals m2))						; (10 30 20)  -- access to values
+
+; process map keys
+(prn (zipmap (map inc (keys m2)) (vals m2)))			; {3 20, 4 30, 2 10}
+
+; process keys and values
+(prn (into {} (map (fn [[k v]] [(inc k) (dec v)]) m2)))	; {2 9, 4 29, 3 19}
+
+; ---------------------------------------------------------------------------------------------------------------------
+
+; merging maps
+
+(def m1 {"a" 1 "b" 2 "c" 3})
+(def m2 {"a" 3 "b" 5 "d" 7})
+(prn (merge-with + m1 m2))						; {"d" 7, "a" 4, "b" 7, "c" 3}
