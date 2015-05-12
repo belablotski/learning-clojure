@@ -58,6 +58,7 @@
 
 ; SET OPETATIONS
 ; All these functions are available in the clojure.set namespace (built into Clojure)
+; http://clojure.github.io/clojure/clojure.set-api.html
 
 (use 'clojure.set)
 (prn (clojure.set/union #{1 2 3} #{1 2 6} #{1 6 8 9}))		; #{1 6 3 2 9 8}

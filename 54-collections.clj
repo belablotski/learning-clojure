@@ -14,11 +14,12 @@
 
 ; -----------------------------------------------------------------------------------------------------
 
-; range
+; range	-- generate sequence
 
 (prn (range 5))			; (0 1 2 3 4)
 ;(prn (range))				; infinite sequence
 (prn (take 5 (range)))		; (0 1 2 3 4)
+(prn (range 5 10 2))		; (5 7 9)		-- works like in Python: [start, end) and step
 
 ; -----------------------------------------------------------------------------------------------------
 
@@ -38,6 +39,20 @@
 (prn (concat [1 2] '(3 4)))	; (1 2 3 4)
 (prn (concat [1 2] [3 4]))	; (1 2 3 4)
 (prn (concat '(1 2) [3 4]))	; (1 2 3 4)
+
+; -----------------------------------------------------------------------------------------------------
+
+; check if element is in collection
+(prn (some #{3} (range 10)))	; 3	-- returns value, not a position
+(prn (some #{3} (range 3 10)))	; 3	-- returns value, not a position
+(prn (some #{10} (range 10)))	; nil
+(prn (some #{nil} [1 2 nil 4 5]))	; nil	-- impossible to check nil
+
+(if (some #{false} [1 2 false 3])	; "FALSE is not found"
+  (prn "FALSE is found")
+  (prn "FALSE is not found"))
+
+(prn (some #{false} [1 2 false 3]))	; nil
 
 ; -----------------------------------------------------------------------------------------------------
 
