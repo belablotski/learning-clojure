@@ -1,0 +1,1 @@
+java -cp C:\Programs\clojure\clojure-1.6.0.jar clojure.main "69-command-line-args.clj" John Jim Bob

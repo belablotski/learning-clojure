@@ -1,3 +1,5 @@
+; namespace - *dynamic* mappings of symbols to vars
+; A namespace is not available until: it is required (i.e. dependency) or there is ns declaration.
 ; See http://en.wikibooks.org/wiki/Clojure_Programming/Concepts#Namespaces_.5B1.5D
 ; * require -- load clojure libraries
 ; * refer -- refer to functions in the current namespace
