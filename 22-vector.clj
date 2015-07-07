@@ -73,3 +73,12 @@
 ; compare - compares arguments and returns -1, 0, 1
 (prn (sort #(compare (:key %1) (:key %2)) vm))	; ({:key "k1", :val "v1"} {:key "k2", :val "v2"} {:key "k3", :val "v3"})
 (prn (sort-by :val vm))						; ({:key "k1", :val "v1"} {:key "k2", :val "v2"} {:key "k3", :val "v3"})
+
+; ---------------------------------------------------------------------------------------------------------------------
+
+; find element position in a vector (get index of element)
+
+(prn (.indexOf ["a" "b" "c"] "a"))			; 0	-- indexes are 0-based
+(prn (.indexOf ["a" "a" "c"] "a"))			; 0	-- index of the first element
+(prn (.indexOf ["a" "a" "a"] "b"))			; -1	-- element isn't found in a vector
+
